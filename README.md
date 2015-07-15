@@ -20,6 +20,15 @@ new_project
   new_project.rb
 ```
 
+Installation
+------------
+
+Installation is fairly simple, I host mail on rubygems, so you can just do:
+
+```
+# gem install cear
+```
+
 Roadmap
 -------
 - Custom template
