@@ -1,0 +1,6 @@
+#encoding: utf-8
+
+##
+## #{@filename}
+## Gaetan JUVIN #{Time.now.to_date.strftime('%d/%m/%Y')}
+##

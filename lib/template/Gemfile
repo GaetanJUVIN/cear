@@ -1,0 +1,12 @@
+source 'https://rubygems.org'
+
+gem 'actionpack'
+gem 'activesupport'
+gem 'activerecord', :require => 'active_record'
+
+gem 'colorize'
+gem 'pry'
+gem 'awesome_print'
+
+#{add_gems(@include_pg, ['pg', 'postgres_ext', 'standalone_migrations'])}
+#{add_gems(@include_redis, ['redis'])}

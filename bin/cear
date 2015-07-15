@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require 'cear'
+
+Cear.run(ARGV[0])

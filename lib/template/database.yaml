@@ -1,0 +1,12 @@
+base: &base
+  adapter: postgresql
+  encoding: unicode
+  pool: 25
+  host: localhost
+  timeout: 5000
+  username: #{ENV['USER']}
+  password:
+
+development:
+  database: #{@app_name}_dev
+  <<: *base
