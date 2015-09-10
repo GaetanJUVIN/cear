@@ -8,5 +8,5 @@ gem 'colorize'
 gem 'pry'
 gem 'awesome_print'
 
-#{add_gems(@include_pg, ['pg', 'postgres_ext', 'standalone_migrations'])}
-#{add_gems(@include_redis, ['redis'])}
+#{Cear::File.add_gems(CearConfig.include_pg, ['pg', 'postgres_ext', 'standalone_migrations'])}
+#{Cear::File.add_gems(CearConfig.include_redis, ['redis'])}

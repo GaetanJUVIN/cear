@@ -50,10 +50,10 @@ module Cear
 			if @app_name == nil
 				@app_name = AskQuestion.new("What is the project name?").ask
 			end
-			@include_pg      = AskQuestion.new("Do you want to include pg?", "N/y").ask == 'y'
-			@include_redis   = AskQuestion.new("Do you want to include redis?", "N/y").ask == 'y'
-			@include_rake    = AskQuestion.new("Do you want to include rake?", "N/y").ask == 'y'
-			@include_advance = AskQuestion.new("Do you want advance mode ? (included subdirectories 'app', 'log', 'tmp')", "N/y").ask == 'y'
+			CearConfig.include_pg      = AskQuestion.new("Do you want to include pg?", "N/y").ask == 'y'
+			CearConfig.include_redis   = AskQuestion.new("Do you want to include redis?", "N/y").ask == 'y'
+			CearConfig.include_rake    = AskQuestion.new("Do you want to include rake?", "N/y").ask == 'y'
+			CearConfig.include_advance = AskQuestion.new("Do you want advance mode ? (included subdirectories 'app', 'log', 'tmp')", "N/y").ask == 'y'
 			@app_name = @app_name.underscore.gsub(' ', '_')
 
 			Dir.mkdir(@app_name) unless ::File.exists?(@app_name)
@@ -63,8 +63,8 @@ module Cear
 				Cear::File.run('console.rb')
 
 				directories = ['config', 'lib']
-				directories << 'db' if @include_pg
-				directories += ['app', 'log', 'tmp'] if @include_advance
+				directories << 'db' if CearConfig.include_pg
+				directories += ['app', 'log', 'tmp'] if CearConfig.include_advance
 				puts "Create directories | #{directories.join(' - ')}".light_green
 
 				directories.each do |subdirectory|
@@ -74,7 +74,7 @@ module Cear
 				Dir.chdir('config') do |dir|
 					Cear::File.run('environment.rb')
 					Cear::File.run('application.rb')
-					Cear::File.run('database.yaml', header: false) if @include_pg
+					Cear::File.run('database.yaml', header: false) if CearConfig.include_pg
 				end
 
 				if @include_rake

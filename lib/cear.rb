@@ -12,6 +12,7 @@ require 'active_support/inflector'
 require 'pty'
 
 require 'cear/version'
+require 'cear/cear_config'
 require 'cear/file'
 require 'cear/project'
 require 'cear/ask_question/ask_question'
