@@ -40,8 +40,8 @@ module Cear
 				puts "Generate #{filename}".green
 				::File.open(@filename, 'w') do |file|
 					if options[:header]
-						if template_exists?('header', '~/')
-		 					file.write(file_generator('header', '~/') + "\n")
+						if template_exists?('.cear_header', '~/')
+		 					file.write(file_generator('.cear_header', '~/') + "\n")
 						else
 		 					file.write(file_generator('header') + "\n")
 			 			end
