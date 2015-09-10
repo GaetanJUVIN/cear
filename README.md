@@ -29,6 +29,19 @@ Installation is fairly simple, I host mail on rubygems, so you can just do:
 # gem install cear
 ```
 
+Configuration
+-------
+```
+$>cat ~/.cear_header
+#encoding: utf-8
+
+##
+## #{@filename}
+## MyNaMe :-) #{Time.now.to_date.strftime('%d/%m/%Y')}
+##
+$>
+```
+
 Roadmap
 -------
 - Custom template

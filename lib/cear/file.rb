@@ -24,12 +24,12 @@ module Cear
 			condition ? gems.map {|g| "gem '#{g}'"}.join("\n") : ""
 		end
 
-		def template_exists?(file, path = '../../')
-			::File.exists?(::File.expand_path("#{path}template/#{file}", __FILE__))
+		def template_exists?(file, path = '../../template')
+			::File.exists?(::File.expand_path("#{path}/#{file}", __FILE__))
 		end
 
-		def file_generator(file, path = '../../')
-			eval('"' + ::File.open(::File.expand_path("#{path}template/#{file}", __FILE__)).read + '"', binding, __FILE__, __LINE__)
+		def file_generator(file, path = '../../template')
+			eval('"' + ::File.open(::File.expand_path("#{path}/#{file}", __FILE__)).read + '"', binding, __FILE__, __LINE__)
 		end
 
 		def generate_file(filename, options = {})
@@ -40,8 +40,8 @@ module Cear
 				puts "Generate #{filename}".green
 				::File.open(@filename, 'w') do |file|
 					if options[:header]
-						if template_exists?('.cear_header', '~/')
-		 					file.write(file_generator('.cear_header', '~/') + "\n")
+						if template_exists?('.cear_header', ::File.expand_path('~/'))
+		 					file.write(file_generator('.cear_header', ::File.expand_path('~/')) + "\n")
 						else
 		 					file.write(file_generator('header') + "\n")
 			 			end
